@@ -5,7 +5,8 @@
     "GMEEK_VERSION":"last",
     "onePageListNum":9,
     "startSite":"12/6/2024",
-    "bottomText":"📒转载请注明出处☺️",
+    "bottomText":"🍉转载请注明出处🥰",
+    #此js和配置参考了https://code.buxiantang.top/项目，做了细微修改。
     "allHead":"<script defer src='https://zmin2003.github.io/Zmin/customize.js'></script>",
     "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/articletoc.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>"
 }
