@@ -1,9 +1,10 @@
 {
     "title":"Zmin的日记本",
     "subTitle":"记录生活点滴📝",
-    "avatarUrl":"https://zmin2003.github.io/Zmin/avatar1.svg",
+    "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
     "GMEEK_VERSION":"last",
     "onePageListNum":9,
     "allHead":"<script src='https://blog.meekdai.com/assets/GmeekVercount.js'></script><script defer src='https://code.buxiantang.top/assets/customize.js'></script><script type='text/javascript'>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','na4qnk47pl');</script>",
-    "bottomText":"🤞转载请注明出处🤞"
+    "bottomText":"🤞转载请注明出处🤞",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/articletoc.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>"
 }
