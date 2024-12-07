@@ -23,7 +23,7 @@
                 --hover-text-color: #0366d6;
                 --shadow-color: rgba(0,0,0,0.1);
                 --link-color: #0366d6;
-                --border-color: transparent; /* Set border color to transparent */
+                --border-color: #e1e4e8;
                 --title-color: #24292f;
                 --article-bg-color: #ffffff;
                 --label-bg-color: #f1f8ff;
@@ -32,6 +32,7 @@
 
             /* 页面过渡效果 */
             body {
+                font-size: 16px;
                 background-color: var(--bg-color);
                 color: var(--text-color);
                 transition: background-color 0.3s ease, color 0.3s ease;
@@ -44,6 +45,27 @@
                 to { opacity: 1; }
             }
 
+            /* 侧边导航栏 */
+            .SideNav.border {
+                background-color: transparent !important;
+                border: 1px solid var(--border-color) !important;
+                border-radius: 6px !important;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            /* 文章容器 */
+            .article-container {
+                background-color: transparent;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                margin-bottom: 16px;
+                transition: all 0.3s ease;
+                overflow: hidden;
+            }
+
+            /* 其他样式调整 */
+
             /* 头部布局 */
             #header {
                 display: flex;
@@ -51,74 +73,6 @@
                 align-items: center;
                 gap: 20px;
                 padding: 20px 0;
-            }
-
-            .brand-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 15px;
-                flex-direction: column;
-            }
-
-            .website-icon {
-                width: 90px;
-                height: 90px;
-                margin-right: 0px;
-                transition: transform 0.3s ease;
-            }
-
-            .website-icon:hover {
-                transform: scale(1.1);
-            }
-
-            .site-name {
-                font-size: 28px;
-                font-weight: 700;
-                color: var(--title-color);
-                margin: 0;
-                transition: color 0.3s ease;
-            }
-
-            .site-name:hover {
-                color: var(--hover-text-color);
-            }
-
-            /* 侧边导航栏 */
-            .SideNav.border {
-                /* Removed border styles */
-                overflow: hidden;
-                transition: all 0.3s ease;
-            }
-
-            .SideNav-item {
-                /* Removed border styles */
-                margin-bottom: 0 !important;
-                transition: all 0.3s ease;
-                padding: 12px 16px;
-                background-color: transparent;
-            }
-
-            .SideNav-item:hover {
-                background-color: var(--hover-bg-color);
-            }
-
-            .SideNav-item .btn-invisible {
-                padding: 0;
-            }
-
-            /* 文章容器 */
-            .article-container {
-                background-color: var(--article-bg-color);
-                /* Removed border styles */
-                margin-bottom: 16px;
-                transition: all 0.3s ease;
-                overflow: hidden;
-            }
-
-            .article-container:hover {
-                box-shadow: 0 4px 12px var(--shadow-color);
-                transform: translateY(-2px);
             }
 
             /* 标题样式 */
@@ -131,81 +85,18 @@
                 color: var(--title-color);
             }
 
-            .blogTitle:hover {
-                color: var(--hover-text-color);
-            }
-
             /* 标签样式 */
             .labelContainer {
-                /* Removed border styles */
+                border-top: 1px solid var(--border-color);
                 display: flex;
                 justify-content: space-between;
                 padding: 3px 10px;
                 background-color: var(--article-bg-color);
             }
 
-            .labelLeft, .labelRight {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-            }
-
-            .labelLeft .Label, .labelRight .Label {
-                margin-right: 5px;
-                margin-bottom: 0px;
-                padding: 0px 5px;
-                border-radius: 2em;
-                font-size: 10px;
-                font-weight: 500;
-                background-color: var(--label-bg-color);
-                color: var(--label-text-color);
-                transition: all 0.3s ease;
-            }
-
-            .labelLeft .Label:hover, .labelRight .Label:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 2px 4px var(--shadow-color);
-            }
-
             /* 内容区域样式 */
             #postBody {
                 color: var(--text-color);
-            }
-
-            #postBody h1, #postBody h2, #postBody h3, #postBody h4, #postBody h5, #postBody h6 {
-                color: var(--title-color);
-            }
-
-            #postBody a {
-                color: var(--link-color);
-                transition: all 0.3s ease;
-            }
-
-            #postBody a:hover {
-                text-decoration: underline;
-            }
-
-            #postBody pre {
-                background-color: var(--hover-bg-color);
-                /* Removed border styles */
-                border-radius: 6px;
-                padding: 16px;
-                overflow-x: auto;
-            }
-
-            #postBody code {
-                background-color: var(--hover-bg-color);
-                color: var(--text-color);
-                padding: 2px 4px;
-                border-radius: 3px;
-            }
-
-            #postBody blockquote {
-                /* Removed border styles */
-                color: var(--text-color);
-                opacity: 0.8;
-                padding-left: 16px;
-                margin-left: 0;
             }
 
             /* 图片样式 */
@@ -215,52 +106,49 @@
                 display: block;
                 margin: 20px auto;
                 max-width: 100%;
-                /* Removed border styles */
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
                 box-shadow: 0 4px 10px var(--shadow-color);
                 transition: all 0.3s ease;
             }
 
-            .post-content img:hover,
-            .cnblogs_post_body img:hover,
-            #postBody img:hover {
-                transform: scale(1.02);
-                box-shadow: 0 6px 15px var(--shadow-color);
-            }
-
             /* 媒体查询 */
             @media (max-width: 768px) {
+                body {
+                    font-size: 14px;
+                }
                 .site-name {
                     font-size: 24px;
                 }
-
                 .blogTitle {
                     font-size: 24px;
                 }
-
                 .labelContainer {
                     flex-direction: row;
                     justify-content: space-between;
                     align-items: center;
                     flex-wrap: wrap;
                 }
-
                 .labelLeft, .labelRight {
                     flex: 1 1 auto;
                     margin: -1px 0;
                 }
-
                 .listTitle {
                     font-size: 17px;
                     line-height: 2.4;
                 }
-
                 .d-flex.flex-items-center {
                     font-size: 1.1em;
                 }
-
                 .d-flex.flex-items-center .octicon {
                     width: 10px;
                     height: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                body {
+                    font-size: 12px;
                 }
             }
         `;
@@ -335,7 +223,8 @@
             img.style.display = 'block';
             img.style.margin = '20px auto';
             img.style.maxWidth = '100%';
-            /* Removed border styles */
+            img.style.border = '1px solid var(--border-color)';
+            img.style.borderRadius = '8px';
             img.style.boxShadow = '0 4px 10px var(--shadow-color)';
             img.style.transition = 'all 0.3s ease';
 
