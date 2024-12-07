@@ -1,202 +1,410 @@
 (function() {
-    // 检测暗黑模式
     function isDarkMode() {
         return document.documentElement.getAttribute('data-color-mode') === 'dark';
     }
 
-    // 获取网站图标
     function getWebsiteIcon() {
-        return 'https://zmin2003.github.io/Zmin/avatar.svg'; // 替换为你的图标链接
+        return 'https://zmin2003.github.io/Zmin/avatar.svg';
     }
 
-    // 获取网站名称
     function getWebsiteName() {
         const footerLink = document.querySelector('#footer1 a');
         return footerLink ? footerLink.textContent : document.title;
     }
 
-    // 添加新的样式
-    function addNewStyles() {
+    function addStyles() {
         const style = document.createElement('style');
         style.textContent = `
             :root {
-                --new-bg-color: ${isDarkMode() ? '#1e2128' : '#e5e5e5'};
-                --new-text-color: ${isDarkMode() ? '#fff' : '#111'};
-                --new-accent-color: ${isDarkMode() ? '#007aff' : '#ff6347'};
-                --new-shadow-color: ${isDarkMode() ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.2)'};
+                --bg-color: #ffffff; /* 纯白色背景 */
+                --text-color: #24292f; /* 深灰色文字 */
+                --hover-bg-color: #f6f8fa; /* 悬停背景色 */
+                --hover-text-color: #0366d6; /* 悬停文字色 */
+                --shadow-color: rgba(0,0,0,0.1); /* 阴影色 */
+                --link-color: #0366d6; /* 链接色 */
+                --border-color: #e1e4e8; /* 边框色 */
+                --title-color: #24292f; /* 标题色 */
+                --article-bg-color: #ffffff; /* 文章背景色 */
+                --label-bg-color: #f1f8ff; /* 标签背景色 */
+                --label-text-color: #0366d6; /* 标签文字色 */
             }
 
             body {
-                background-color: var(--new-bg-color);
-                color: var(--new-text-color);
-                font-family: 'Helvetica Neue', Arial, sans-serif;
-                transition: background-color 0.5s, color 0.5s;
-                overflow-x: hidden;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                transition: background-color 0.3s ease, color 0.3s ease;
+                opacity: 0;
+                animation: fadeIn 0.5s ease-out forwards;
+                margin: 0;
+                padding: 0;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             }
 
-            /* 新的导航栏样式 */
-            .navbar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                background-color: var(--new-bg-color);
-                padding: 10px 20px;
-                box-shadow: 0 2px 5px var(--new-shadow-color);
-                z-index: 1000;
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
             }
 
-            .navbar a {
-                color: var(--new-text-color);
-                text-decoration: none;
+            #header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 50px 0;
+            }
+
+            .brand-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 50px;
+            }
+
+            .website-icon {
+                display: none; /* 移除网站图标 */
+            }
+
+            .site-name {
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--title-color);
+                margin: 0;
+                transition: color 0.3s ease;
+            }
+
+            .site-name:hover {
+                color: var(--hover-text-color);
+            }
+
+            .postTitle {
+                font-size: 36px;
                 font-weight: bold;
-                margin-right: 20px;
-                transition: color 0.3s;
+                margin-bottom: 30px;
             }
 
-            .navbar a:hover {
-                color: var(--new-accent-color);
-            }
-
-            /* 新的标题样式 */
-            .new-header {
-                text-align: center;
-                padding: 50px 20px;
-                background-image: linear-gradient(to right, var(--new-accent-color), #ff6347);
-                color: #fff;
-                margin-top: 60px; /* 留出导航栏空间 */
-            }
-
-            .new-header h1 {
-                font-size: 3.5em;
-                margin-bottom: 20px;
-            }
-
-            .new-header p {
-                font-size: 1.2em;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            /* 新的内容区域样式 */
-            .content-wrapper {
+            .article-container {
                 max-width: 800px;
                 margin: 50px auto;
-                padding: 20px;
-                background-color: var(--new-bg-color);
-                border-radius: 10px;
-                box-shadow: 0 5px 15px var(--new-shadow-color);
-                color: var(--new-text-color);
+                padding: 30px;
+                box-shadow: 0 4px 12px var(--shadow-color);
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
             }
 
-            .content-wrapper h2 {
-                font-size: 2em;
-                color: var(--new-accent-color);
-                margin-top: 40px;
+            .article-container:hover {
+                box-shadow: 0 6px 15px var(--shadow-color);
+                transform: translateY(-5px);
             }
 
-            .content-wrapper p {
-                line-height: 1.6;
-                margin-bottom: 25px;
+            .SideNav.border {
+                border: 1px solid var(--border-color) !important;
+                border-radius: 6px !important;
+                overflow: hidden;
+                transition: all 0.3s ease;
             }
 
-            /* 新的图片样式 */
-            .content-wrapper img {
-                max-width: 100%;
-                border-radius: 8px;
-                box-shadow: 0 5px 15px var(--new-shadow-color);
-                margin: 30px auto;
-                display: block;
+            .SideNav-item {
+                border: none !important;
+                margin-bottom: 0 !important;
+                transition: all 0.3s ease;
+                padding: 12px 16px;
+                background-color: transparent;
             }
 
-            /* 新的按钮样式 */
-            .new-button {
+            .SideNav-item:hover {
+                background-color: var(--hover-bg-color);
+            }
+
+            .listTitle {
+                font-size: 18px;
+                line-height: 1.5;
+                font-weight: 600;
+                transition: all 0.3s ease;
                 display: inline-block;
-                padding: 10px 20px;
-                background-color: var(--new-accent-color);
-                color: #fff;
+                color: var(--title-color);
+            }
+
+            .listTitle:hover {
+                color: var(--hover-text-color);
                 text-decoration: none;
-                border-radius: 5px;
-                transition: background-color 0.3s;
+                transform: translateX(5px);
             }
 
-            .new-button:hover {
-                background-color: #ff6347;
+            .labelContainer {
+                border-top: 1px solid var(--border-color);
+                display: flex;
+                justify-content: space-between;
+                padding: 3px 10px;
+                background-color: var(--article-bg-color);
             }
 
-            /* 响应式调整 */
+            .labelLeft {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+            .labelRight {
+                display: flex !important;
+                flex-wrap: wrap;
+                align-items: center;
+                flex-direction: row-reverse;
+            }
+            .labelLeft .Label, .labelRight .Label {
+                margin-right: 5px;
+                margin-bottom: 0px;
+                padding: 0px 5px;
+                border-radius: 2em;
+                font-size: 10px;
+                font-weight: 500;
+                background-color: var(--label-bg-color);
+                color: #ffffff;
+                transition: all 0.3s ease;
+            }
+
+            .labelLeft .Label:hover, .labelRight .Label:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 2px 4px var(--shadow-color);
+            }
+
+            .blogTitle, .postTitle {
+                font-size: 32px;
+                font-weight: 600;
+                margin-top: 16px;
+                transition: all 0.3s ease;
+                text-align: center;
+                color: var(--title-color);
+            }
+
+            .blogTitle:hover {
+                color: var(--hover-text-color);
+            }
+
+            #postBody {
+                color: var(--text-color);
+            }
+
+            #postBody h1, #postBody h2, #postBody h3, #postBody h4, #postBody h5, #postBody h6 {
+                color: var(--title-color);
+            }
+
+            #postBody a {
+                color: var(--link-color);
+                transition: all 0.3s ease;
+            }
+
+            #postBody a:hover {
+                text-decoration: underline;
+            }
+
+            #postBody pre {
+                background-color: var(--hover-bg-color);
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                padding: 16px;
+                overflow-x: auto;
+            }
+
+            #postBody code {
+                background-color: var(--hover-bg-color);
+                color: var(--text-color);
+                padding: 2px 4px;
+                border-radius: 3px;
+            }
+
+            #postBody blockquote {
+                border-left: 4px solid var(--border-color);
+                color: var(--text-color);
+                opacity: 0.8;
+                padding-left: 16px;
+                margin-left: 0;
+            }
+
+            .post-content img,
+            .cnblogs_post_body img,
+            #postBody img {
+                display: block;
+                margin: 20px auto;
+                max-width: 100%;
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                box-shadow: 0 4px 10px var(--shadow-color);
+                transition: all 0.3s ease;
+            }
+
+            .post-content img:hover,
+            .cnblogs_post_body img:hover,
+            #postBody img:hover {
+                transform: scale(1.02);
+                box-shadow: 0 6px 15px var(--shadow-color);
+            }
+
             @media (max-width: 768px) {
-                .new-header h1 {
-                    font-size: 2.5em;
+                .blogTitle, .labelRight, .site-name {
+                    font-size: 24px;
                 }
 
-                .new-header p {
-                    font-size: 1em;
+                .listTitle {
+                    font-size: 17px;
+                    line-height: 2.4;
                 }
 
-                .content-wrapper {
-                    padding: 10px;
+                .labelContainer {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+
+                .labelLeft, .labelRight {
+                    flex: 1 1 auto;
+                    margin: -1px 0;
+                }
+
+                .d-flex.flex-items-center {
+                    font-size: 1.1em;
+                }
+
+                .d-flex.flex-items-center .octicon {
+                    width: 10px;
+                    height: 20px;
+                }
+                .LabelTime {
+                    display: flex !important;
+                    flex-direction: row-reverse;
                 }
             }
         `;
         document.head.appendChild(style);
     }
 
-    // 添加新的导航栏
-    function addNewNavbar() {
-        const navbar = document.createElement('div');
-        navbar.className = 'navbar';
-        navbar.innerHTML = `
-            <a href="#header">首页</a>
-            <a href="#about">关于</a>
-            <a href="#contact">联系</a>
-        `;
-        document.body.insertBefore(navbar, document.body.firstChild);
+    function adjustLabels() {
+        const sideNavItems = document.querySelectorAll('.SideNav-item');
+        sideNavItems.forEach(item => {
+            const labels = item.querySelectorAll('.Label.LabelName');
+            const time = item.querySelector('.Label.LabelTime');
+            
+            const articleContainer = document.createElement('div');
+            articleContainer.className = 'article-container';
+            
+            const labelContainer = document.createElement('div');
+            labelContainer.className = 'labelContainer fade-in';
+            
+            const labelLeft = document.createElement('div');
+            labelLeft.className = 'labelLeft';
+            const labelRight = document.createElement('div');
+            labelRight.className = 'labelRight';
+            
+            labels.forEach(label => labelLeft.appendChild(label.cloneNode(true)));
+            if (time) labelRight.appendChild(time.cloneNode(true));
+            
+            labelContainer.appendChild(labelLeft);
+            labelContainer.appendChild(labelRight);
+            
+            item.parentNode.insertBefore(articleContainer, item);
+            articleContainer.appendChild(item);
+            articleContainer.appendChild(labelContainer);
+            
+            labels.forEach(label => label.remove());
+            if (time) time.remove();
+
+            item.style.padding = '0';
+        });
     }
 
-    // 添加新的标题部分
-    function addNewHeader() {
-        const newHeader = document.createElement('div');
-        newHeader.id = 'header';
-        newHeader.className = 'new-header';
-        newHeader.innerHTML = `
-            <h1>${getWebsiteName()}</h1>
-            <p>欢迎来到新的世界！</p>
-        `;
-        document.body.insertBefore(newHeader, document.body.firstChild);
+    function addBrandToPostTitle() {
+        const header = document.querySelector('#header');
+        if (!header) return;
+
+        const brandWrapper = document.createElement('div');
+        brandWrapper.className = 'brand-wrapper fade-in';
+
+        const favicon = document.createElement('img');
+        favicon.src = getWebsiteIcon();
+        favicon.alt = 'Website Icon';
+        favicon.className = 'website-icon';
+
+        const siteName = document.createElement('h1');
+        siteName.textContent = getWebsiteName();
+        siteName.className = 'site-name';
+
+        brandWrapper.appendChild(favicon);
+        brandWrapper.appendChild(siteName);
+
+        const postTitle = header.querySelector('.postTitle');
+        const titleRight = header.querySelector('.title-right');
+
+        header.innerHTML = '';
+        header.appendChild(brandWrapper);
+        if (postTitle) header.appendChild(postTitle);
+        if (titleRight) header.appendChild(titleRight);
     }
 
-    // 添加新的内容样式
-    function wrapContent() {
-        const mainContent = document.querySelector('main');
-        if (mainContent) {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'content-wrapper';
-            mainContent.parentNode.insertBefore(wrapper, mainContent);
-            wrapper.appendChild(mainContent);
-        }
+    function styleImages() {
+        const images = document.querySelectorAll('.post-content img, .cnblogs_post_body img, #postBody img');
+        images.forEach(img => {
+            img.style.display = 'block';
+            img.style.margin = '20px auto';
+            img.style.maxWidth = '100%';
+            img.style.border = '1px solid var(--border-color)';
+            img.style.borderRadius = '8px';
+            img.style.boxShadow = '0 4px 10px var(--shadow-color)';
+            img.style.transition = 'all 0.3s ease';
+            
+            img.addEventListener('mouseover', () => {
+                img.style.transform = 'scale(1.02)';
+                img.style.boxShadow = '0 6px 15px var(--shadow-color)';
+            });
+            img.addEventListener('mouseout', () => {
+                img.style.transform = 'scale(1)';
+                img.style.boxShadow = '0 4px 10px var(--shadow-color)';
+            });
+        });
     }
 
-    // 初始化函数
     function init() {
-        addNewStyles();
-        addNewNavbar();
-        addNewHeader();
-        wrapContent();
+        document.body.style.opacity = '0';
+        addStyles();
+        adjustLabels();
+        addBrandToPostTitle();
+        styleImages();
+
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 0);
+
+        // 添加回到顶部按钮
+        const backToTopBtn = document.createElement('a');
+        backToTopBtn.href = '#header';
+        backToTopBtn.textContent = '回到顶部';
+        backToTopBtn.style.position = 'fixed';
+        backToTopBtn.style.bottom = '20px';
+        backToTopBtn.style.right = '20px';
+        backToTopBtn.style.display = 'none';
+        backToTopBtn.style.backgroundColor = 'var(--link-color)';
+        backToTopBtn.style.color = 'var(--text-color)';
+        backToTopBtn.style.padding = '10px 20px';
+        backToTopBtn.style.borderRadius = '5px';
+
+        document.body.appendChild(backToTopBtn);
+
+        // 滚动事件监听器
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
     }
 
-    // 确保DOM加载完成后执行
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // 监听暗黑模式切换
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'data-color-mode') {
-                addNewStyles();
+                addStyles();
             }
         });
     });
