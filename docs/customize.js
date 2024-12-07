@@ -1,25 +1,21 @@
 (function() {
-    // 检测是否处于暗黑模式
     function isDarkMode() {
         return document.documentElement.getAttribute('data-color-mode') === 'dark';
     }
 
-    // 获取网站图标
     function getWebsiteIcon() {
-        return 'https://zmin2003.github.io/Zmin/avatar.svg';
+        return 'https://zmin2003.github.io/Zmin/avatar1.svg';
     }
 
-    // 获取网站名称
     function getWebsiteName() {
         const footerLink = document.querySelector('#footer1 a');
         return footerLink ? footerLink.textContent : document.title;
     }
 
-    // 添加自定义样式
     function addStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            /* 定义CSS变量 */
+            /* 全局变量 */
             :root {
                 --bg-color: ${isDarkMode() ? '#0d1117' : '#ffffff'};
                 --text-color: ${isDarkMode() ? '#c9d1d9' : '#24292f'};
@@ -34,7 +30,7 @@
                 --label-text-color: ${isDarkMode() ? '#ffffff' : '#0366d6'};
             }
 
-            /* 淡入动画 */
+            /* 页面过渡效果 */
             body {
                 background-color: var(--bg-color);
                 color: var(--text-color);
@@ -48,7 +44,7 @@
                 to { opacity: 1; }
             }
 
-            /* 头部样式 */
+            /* 头部布局 */
             #header {
                 display: flex;
                 flex-direction: column;
@@ -59,14 +55,16 @@
 
             .brand-wrapper {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
+                justify-content: center;
                 margin-bottom: 15px;
+                flex-direction: column;
             }
 
             .website-icon {
                 width: 90px;
                 height: 90px;
+                margin-right: 0px;
                 transition: transform 0.3s ease;
             }
 
@@ -79,23 +77,24 @@
                 font-weight: 700;
                 color: var(--title-color);
                 margin: 0;
+                transition: color 0.3s ease;
             }
 
             .site-name:hover {
                 color: var(--hover-text-color);
             }
 
-            /* 侧边导航样式 */
+            /* 侧边导航栏 */
             .SideNav.border {
-                border: 1px solid var(--border-color);
-                border-radius: 6px;
+                border: 1px solid var(--border-color) !important;
+                border-radius: 6px !important;
                 overflow: hidden;
                 transition: all 0.3s ease;
             }
 
             .SideNav-item {
-                border: none;
-                margin-bottom: 0;
+                border: none !important;
+                margin-bottom: 0 !important;
                 transition: all 0.3s ease;
                 padding: 12px 16px;
                 background-color: transparent;
@@ -109,7 +108,7 @@
                 padding: 0;
             }
 
-            /* 文章容器样式 */
+            /* 文章容器 */
             .article-container {
                 background-color: var(--article-bg-color);
                 border: 1px solid var(--border-color);
@@ -124,22 +123,21 @@
                 transform: translateY(-2px);
             }
 
-            /* 标题和标签样式 */
-            .listTitle {
-                font-size: 18px;
-                line-height: 1.5;
+            /* 标题样式 */
+            .postTitle, .blogTitle {
+                font-size: 32px;
                 font-weight: 600;
+                margin-top: 16px;
                 transition: all 0.3s ease;
-                display: inline-block;
+                text-align: center;
                 color: var(--title-color);
             }
 
-            .listTitle:hover {
+            .blogTitle:hover {
                 color: var(--hover-text-color);
-                text-decoration: none;
-                transform: translateX(5px);
             }
 
+            /* 标签样式 */
             .labelContainer {
                 border-top: 1px solid var(--border-color);
                 display: flex;
@@ -171,20 +169,7 @@
                 box-shadow: 0 2px 4px var(--shadow-color);
             }
 
-            /* 文章内容样式 */
-            .blogTitle, .postTitle {
-                font-size: 32px;
-                font-weight: 600;
-                margin-top: 16px;
-                transition: all 0.3s ease;
-                text-align: center;
-                color: var(--title-color);
-            }
-
-            .blogTitle:hover {
-                color: var(--hover-text-color);
-            }
-
+            /* 内容区域样式 */
             #postBody {
                 color: var(--text-color);
             }
@@ -226,7 +211,9 @@
             }
 
             /* 图片样式 */
-            .post-content img, .cnblogs_post_body img, #postBody img {
+            .post-content img,
+            .cnblogs_post_body img,
+            #postBody img {
                 display: block;
                 margin: 20px auto;
                 max-width: 100%;
@@ -236,15 +223,33 @@
                 transition: all 0.3s ease;
             }
 
-            .post-content img:hover, .cnblogs_post_body img:hover, #postBody img:hover {
+            .post-content img:hover,
+            .cnblogs_post_body img:hover,
+            #postBody img:hover {
                 transform: scale(1.02);
                 box-shadow: 0 6px 15px var(--shadow-color);
             }
 
-            /* 响应式设计 */
+            /* 媒体查询 */
             @media (max-width: 768px) {
                 .site-name {
                     font-size: 24px;
+                }
+
+                .blogTitle {
+                    font-size: 24px;
+                }
+
+                .labelContainer {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+
+                .labelLeft, .labelRight {
+                    flex: 1 1 auto;
+                    margin: -1px 0;
                 }
 
                 .listTitle {
@@ -252,21 +257,19 @@
                     line-height: 2.4;
                 }
 
-                .labelContainer {
-                    flex-direction: column;
-                    align-items: flex-start;
+                .d-flex.flex-items-center {
+                    font-size: 1.1em;
                 }
 
-                .labelLeft, .labelRight {
-                    width: 100%;
-                    margin-bottom: 5px;
+                .d-flex.flex-items-center .octicon {
+                    width: 10px;
+                    height: 20px;
                 }
             }
         `;
         document.head.appendChild(style);
     }
 
-    // 调整标签布局
     function adjustLabels() {
         const sideNavItems = document.querySelectorAll('.SideNav-item');
         sideNavItems.forEach(item => {
@@ -277,7 +280,7 @@
             articleContainer.className = 'article-container';
 
             const labelContainer = document.createElement('div');
-            labelContainer.className = 'labelContainer';
+            labelContainer.className = 'labelContainer fade-in';
 
             const labelLeft = document.createElement('div');
             labelLeft.className = 'labelLeft';
@@ -301,13 +304,12 @@
         });
     }
 
-    // 在文章标题上添加品牌标志
     function addBrandToPostTitle() {
         const header = document.querySelector('#header');
         if (!header) return;
 
         const brandWrapper = document.createElement('div');
-        brandWrapper.className = 'brand-wrapper';
+        brandWrapper.className = 'brand-wrapper fade-in';
 
         const favicon = document.createElement('img');
         favicon.src = getWebsiteIcon();
@@ -330,7 +332,6 @@
         if (titleRight) header.appendChild(titleRight);
     }
 
-    // 样式化图片
     function styleImages() {
         const images = document.querySelectorAll('.post-content img, .cnblogs_post_body img, #postBody img');
         images.forEach(img => {
@@ -353,7 +354,6 @@
         });
     }
 
-    // 初始化函数
     function init() {
         document.body.style.opacity = '0';
         addStyles();
@@ -366,14 +366,12 @@
         }, 0);
     }
 
-    // 页面加载时初始化
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // 监听暗黑模式切换
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'data-color-mode') {
