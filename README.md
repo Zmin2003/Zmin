@@ -4,3 +4,4 @@
 ### :hibiscus: 232 
 ### :alarm_clock: 2024-12-07 14:37:33 
 ### Powered by :heart: [Gmeek](https://github.com/Meekdai/Gmeek)
+### 项目细节方面借用了 [tienming](https://github.com/tiengming/tiengming.github.io?tab=readme-ov-file)
