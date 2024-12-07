@@ -17,17 +17,17 @@
         style.textContent = `
             /* 全局变量 */
             :root {
-                --bg-color: ${isDarkMode() ? '#0d1117' : '#ffffff'};
-                --text-color: ${isDarkMode() ? '#c9d1d9' : '#24292f'};
-                --hover-bg-color: ${isDarkMode() ? '#21262d' : '#f6f8fa'};
-                --hover-text-color: ${isDarkMode() ? '#ffffff' : '#0366d6'};
-                --shadow-color: ${isDarkMode() ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.1)'};
-                --link-color: ${isDarkMode() ? '#58a6ff' : '#0366d6'};
-                --border-color: ${isDarkMode() ? '#30363d' : '#e1e4e8'};
-                --title-color: ${isDarkMode() ? '#c9d1d9' : '#24292f'};
-                --article-bg-color: ${isDarkMode() ? '#161b22' : '#ffffff'};
-                --label-bg-color: ${isDarkMode() ? '#30363d' : '#f1f8ff'};
-                --label-text-color: ${isDarkMode() ? '#ffffff' : '#0366d6'};
+                --bg-color: #ffffff;
+                --text-color: #24292f;
+                --hover-bg-color: #f6f8fa;
+                --hover-text-color: #0366d6;
+                --shadow-color: rgba(0,0,0,0.1);
+                --link-color: #0366d6;
+                --border-color: transparent; /* Set border color to transparent */
+                --title-color: #24292f;
+                --article-bg-color: #ffffff;
+                --label-bg-color: #f1f8ff;
+                --label-text-color: #0366d6;
             }
 
             /* 页面过渡效果 */
@@ -86,14 +86,13 @@
 
             /* 侧边导航栏 */
             .SideNav.border {
-                border: 1px solid var(--border-color) !important;
-                border-radius: 6px !important;
+                /* Removed border styles */
                 overflow: hidden;
                 transition: all 0.3s ease;
             }
 
             .SideNav-item {
-                border: none !important;
+                /* Removed border styles */
                 margin-bottom: 0 !important;
                 transition: all 0.3s ease;
                 padding: 12px 16px;
@@ -111,8 +110,7 @@
             /* 文章容器 */
             .article-container {
                 background-color: var(--article-bg-color);
-                border: 1px solid var(--border-color);
-                border-radius: 6px;
+                /* Removed border styles */
                 margin-bottom: 16px;
                 transition: all 0.3s ease;
                 overflow: hidden;
@@ -139,7 +137,7 @@
 
             /* 标签样式 */
             .labelContainer {
-                border-top: 1px solid var(--border-color);
+                /* Removed border styles */
                 display: flex;
                 justify-content: space-between;
                 padding: 3px 10px;
@@ -189,7 +187,7 @@
 
             #postBody pre {
                 background-color: var(--hover-bg-color);
-                border: 1px solid var(--border-color);
+                /* Removed border styles */
                 border-radius: 6px;
                 padding: 16px;
                 overflow-x: auto;
@@ -203,7 +201,7 @@
             }
 
             #postBody blockquote {
-                border-left: 4px solid var(--border-color);
+                /* Removed border styles */
                 color: var(--text-color);
                 opacity: 0.8;
                 padding-left: 16px;
@@ -217,8 +215,7 @@
                 display: block;
                 margin: 20px auto;
                 max-width: 100%;
-                border: 1px solid var(--border-color);
-                border-radius: 8px;
+                /* Removed border styles */
                 box-shadow: 0 4px 10px var(--shadow-color);
                 transition: all 0.3s ease;
             }
@@ -338,8 +335,7 @@
             img.style.display = 'block';
             img.style.margin = '20px auto';
             img.style.maxWidth = '100%';
-            img.style.border = '1px solid var(--border-color)';
-            img.style.borderRadius = '8px';
+            /* Removed border styles */
             img.style.boxShadow = '0 4px 10px var(--shadow-color)';
             img.style.transition = 'all 0.3s ease';
 
