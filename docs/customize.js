@@ -1,41 +1,36 @@
 (function() {
-    // 检查当前是否为暗黑模式
     function isDarkMode() {
         return document.documentElement.getAttribute('data-color-mode') === 'dark';
     }
 
-    // 获取网站图标
     function getWebsiteIcon() {
         return 'https://zmin2003.github.io/Zmin/avatar.svg';
     }
 
-    // 获取网站名称
     function getWebsiteName() {
         const footerLink = document.querySelector('#footer1 a');
         return footerLink ? footerLink.textContent : document.title;
     }
 
-    // 添加自定义样式
     function addStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            /* 主题颜色变量 */
             :root {
-                --bg-color: ${isDarkMode() ? '#0d1117' : '#ffffff'};
-                --text-color: ${isDarkMode() ? '#c9d1d9' : '#24292f'};
-                --hover-bg-color: ${isDarkMode() ? '#21262d' : '#f6f8fa'};
-                --hover-text-color: ${isDarkMode() ? '#ffffff' : '#0366d6'};
-                --shadow-color: ${isDarkMode() ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.1)'};
-                --link-color: ${isDarkMode() ? '#58a6ff' : '#0366d6'};
-                --border-color: ${isDarkMode() ? '#30363d' : '#e1e4e8'};
-                --title-color: ${isDarkMode() ? '#c9d1d9' : '#24292f'};
-                --article-bg-color: ${isDarkMode() ? '#161b22' : '#ffffff'};
-                --label-bg-color: ${isDarkMode() ? '#30363d' : '#f1f8ff'};
-                --label-text-color: ${isDarkMode() ? '#ffffff' : '#0366d6'};
+                --bg-color: #f5f5f5; /* 更亮的背景 */
+                --text-color: #333;  /* 深色文字 */
+                --hover-bg-color: #e0e0e0;
+                --hover-text-color: #000;
+                --shadow-color: rgba(0,0,0,0.2);
+                --link-color: #007bff;
+                --border-color: #ddd;
+                --title-color: #222;
+                --article-bg-color: #fff;
+                --label-bg-color: #007bff;
+                --label-text-color: #fff;
             }
 
-            /* 页面过渡效果 */
             body {
+                font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 background-color: var(--bg-color);
                 color: var(--text-color);
                 transition: background-color 0.3s ease, color 0.3s ease;
@@ -48,7 +43,6 @@
                 to { opacity: 1; }
             }
 
-            /* 头部样式 */
             #header {
                 display: flex;
                 flex-direction: column;
@@ -57,27 +51,17 @@
                 padding: 20px 0;
             }
 
-            .brand-wrapper,
-            .postTitle,
-            .title-right {
-                width: 100%;
-                text-align: center;
-                justify-content: space-evenly;
+            .brand-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 10px;
             }
 
-            .d-flex.flex-items-center {
-                font-size: 1.2em;
-            }
-
-            .d-flex.flex-items-center .octicon {
-                width: 24px;
-                height: 24px;
-            }
-
-            /* 侧边导航样式 */
             .SideNav.border {
-                border: 1px solid var(--border-color) !important;
-                border-radius: 6px !important;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
                 overflow: hidden;
                 transition: all 0.3s ease;
             }
@@ -87,7 +71,6 @@
                 border: 1px solid var(--border-color);
                 border-radius: 6px;
                 margin-bottom: 16px;
-                transition: all 0.3s ease;
                 overflow: hidden;
             }
 
@@ -108,10 +91,6 @@
                 background-color: var(--hover-bg-color);
             }
 
-            .SideNav-item .btn-invisible {
-                padding: 0;
-            }
-
             .listTitle {
                 font-size: 18px;
                 line-height: 1.5;
@@ -127,38 +106,21 @@
                 transform: translateX(5px);
             }
 
-            /* 标签样式 */
             .labelContainer {
-                border-top: 1px solid var(--border-color);
                 display: flex;
                 justify-content: space-between;
                 padding: 3px 10px;
-                background-color: var(--article-bg-color);
-            }
-
-            .labelLeft {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-            }
-
-            .labelRight {
-                display: flex !important;
-                flex-wrap: wrap;
-                align-items: center;
-                flex-direction: row-reverse;
             }
 
             .labelLeft .Label, .labelRight .Label {
                 margin-right: 5px;
-                margin-bottom: 0px;
                 padding: 0px 5px;
                 border-radius: 2em;
                 font-size: 10px;
                 font-weight: 500;
                 background-color: var(--label-bg-color);
                 color: var(--label-text-color);
-                transition: all 0.3s ease;
+                transition: transform 0.3s ease;
             }
 
             .labelLeft .Label:hover, .labelRight .Label:hover {
@@ -166,19 +128,9 @@
                 box-shadow: 0 2px 4px var(--shadow-color);
             }
 
-            /* 品牌标识样式 */
-            .brand-wrapper {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 15px;
-                flex-direction: column;
-            }
-
             .website-icon {
-                width: 90px;
-                height: 90px;
-                margin-right: 0px;
+                width: 50px;
+                height: 50px;
                 transition: transform 0.3s ease;
             }
 
@@ -187,10 +139,9 @@
             }
 
             .site-name {
-                font-size: 28px;
-                font-weight: 700;
+                font-size: 24px;
+                font-weight: 600;
                 color: var(--title-color);
-                margin: 0;
                 transition: color 0.3s ease;
             }
 
@@ -198,7 +149,6 @@
                 color: var(--hover-text-color);
             }
 
-            /* 文章标题样式 */
             .blogTitle, .postTitle {
                 font-size: 32px;
                 font-weight: 600;
@@ -212,7 +162,6 @@
                 color: var(--hover-text-color);
             }
 
-            /* 文章内容样式 */
             #postBody {
                 color: var(--text-color);
             }
@@ -253,68 +202,42 @@
                 margin-left: 0;
             }
 
-            /* 图片样式 */
-            .post-content img,
-            .cnblogs_post_body img,
-            #postBody img {
-                display: block;
-                margin: 20px auto;
+            .post-content img, .cnblogs_post_body img, #postBody img {
                 max-width: 100%;
                 border: 1px solid var(--border-color);
                 border-radius: 8px;
                 box-shadow: 0 4px 10px var(--shadow-color);
-                transition: all 0.3s ease;
+                transition: transform 0.3s ease;
             }
 
-            .post-content img:hover,
-            .cnblogs_post_body img:hover,
-            #postBody img:hover {
-                transform: scale(1.02);
-                box-shadow: 0 6px 15px var(--shadow-color);
+            .post-content img:hover, .cnblogs_post_body img:hover, #postBody img:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px var(--shadow-color);
             }
 
-            /* 响应式设计 */
             @media (max-width: 768px) {
-                .blogTitle, .labelRight, .site-name {
-                    font-size: 24px;
+                .brand-wrapper {
+                    flex-direction: column;
+                    align-items: center;
                 }
 
-                .listTitle {
-                    font-size: 17px;
-                    line-height: 2.4;
+                .site-name {
+                    font-size: 20px;
                 }
 
                 .labelContainer {
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                    flex-wrap: wrap;
+                    flex-direction: column;
                 }
 
                 .labelLeft, .labelRight {
-                    flex: 1 1 auto;
-                    margin: -1px 0;
-                }
-
-                .d-flex.flex-items-center {
-                    font-size: 1.1em;
-                }
-
-                .d-flex.flex-items-center .octicon {
-                    width: 10px;
-                    height: 20px;
-                }
-
-                .LabelTime {
-                    display: flex !important;
-                    flex-direction: row-reverse;
+                    width: 100%;
+                    margin-bottom: 5px;
                 }
             }
         `;
         document.head.appendChild(style);
     }
 
-    // 调整标签布局
     function adjustLabels() {
         const sideNavItems = document.querySelectorAll('.SideNav-item');
         sideNavItems.forEach(item => {
@@ -349,7 +272,6 @@
         });
     }
 
-    // 添加品牌标识到文章标题
     function addBrandToPostTitle() {
         const header = document.querySelector('#header');
         if (!header) return;
@@ -378,7 +300,6 @@
         if (titleRight) header.appendChild(titleRight);
     }
 
-    // 样式化图片
     function styleImages() {
         const images = document.querySelectorAll('.post-content img, .cnblogs_post_body img, #postBody img');
         images.forEach(img => {
@@ -391,8 +312,8 @@
             img.style.transition = 'all 0.3s ease';
             
             img.addEventListener('mouseover', () => {
-                img.style.transform = 'scale(1.02)';
-                img.style.boxShadow = '0 6px 15px var(--shadow-color)';
+                img.style.transform = 'scale(1.05)';
+                img.style.boxShadow = '0 6px 12px var(--shadow-color)';
             });
             img.addEventListener('mouseout', () => {
                 img.style.transform = 'scale(1)';
@@ -401,7 +322,6 @@
         });
     }
 
-    // 初始化函数
     function init() {
         document.body.style.opacity = '0';
         addStyles();
@@ -414,14 +334,12 @@
         }, 0);
     }
 
-    // 监听DOMContentLoaded事件
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
 
-    // 监听暗黑模式切换
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'attributes' && mutation.attributeName === 'data-color-mode') {
