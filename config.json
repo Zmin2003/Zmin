@@ -6,6 +6,6 @@
     "startSite":"12/6/2024",
     "bottomText":"🍉转载请注明出处🥰",
     "allHead":"<script defer src='https://zmin2003.github.io/Zmin/customize.js'></script>",
-    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>document.getElementById('needComment').click();</script><script>",
-    "subTitle":"<script>document.getElementById('content').innerHTML = `<br style='clear: both;'>记录生活点滴📝<br style='clear: both;'>`;</script>"
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>",
+    "subTitle":"<script>document.addEventListener('DOMContentLoaded', function() {const contentDiv = document.getElementById('content');contentDiv.innerHTML = `<br>记录生活点滴📝<br><br>`;contentDiv.style.textAlign = 'center';contentDiv.style.marginBottom = '16px';});</script>"
 }
