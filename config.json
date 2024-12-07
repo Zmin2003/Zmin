@@ -9,4 +9,4 @@
     "allHead":"<script defer src='https://zmin2003.github.io/Zmin/customize.js'></script>",
     "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>document.getElementById('cmButton').click();</script><script>",
     "subTitle":"<script>document.getElementById('content').innerHTML = `<br style='clear: both;'>记录生活点滴📝<br style='clear: both;'>`;</script>"
-｝
+}
