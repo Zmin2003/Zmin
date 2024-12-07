@@ -4,7 +4,7 @@
     }
 
     function getWebsiteIcon() {
-        return 'https://zmin2003.github.io/Zmin/avatar1.svg';
+        return 'https://zmin2003.github.io/Zmin/avatar.svg';
     }
 
     function getWebsiteName() {
