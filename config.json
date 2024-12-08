@@ -6,6 +6,7 @@
     "needComment":0,
     "avatarUrl":"https://zmin2003.github.io/Zmin/avatar.svg",
     "onePageListNum":9,
+    "primerCSS":"<link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />",
     "startSite":"12/6/2024",
     "bottomText":"🍉转载请注明出处🥰",
     "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script><script>",
